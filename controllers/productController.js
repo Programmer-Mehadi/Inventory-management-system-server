@@ -3,7 +3,6 @@ const Product = require('../models/Product');
 
 
 const addProduct = async (req, res) => {
-    console.log(req.body)
     let product = new Product({
         name: req.body.name,
         email: req.body.email,
@@ -28,7 +27,6 @@ const addProduct = async (req, res) => {
 
 const imageUpload = async (req, res) => {
     const url = req?.file?.path;
-    console.log(url);
     res.send({ path: url });
 }
 
@@ -50,10 +48,8 @@ const searchProduct = async (req, res) => {
 }
 const singleProduct = async (req, res) => {
     const id = req.params.id;
-    console.log(id);
     Product.find({ _id: id })
         .then(result => {
-            console.log(result);
             res.send(result)
         })
 
@@ -62,18 +58,14 @@ const deleteProduct = async (req, res) => {
     const id = req.query.id;
     Product.deleteOne({ _id: id })
         .then(result => {
-            console.log(result);
             res.send(result)
         })
 }
 const updateProduct = async (req, res) => {
     const id = req.query.id;
     const email = req.query.email;
-    console.log(id, email);
-    console.log('data: ', req.body)
     Product.updateOne({ _id: id, email: email }, { $set: { name: req.body.name, price: req.body.price } })
         .then(result => {
-            console.log(result);
             res.send(result)
         })
 }

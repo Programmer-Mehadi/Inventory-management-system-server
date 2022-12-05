@@ -18,7 +18,6 @@ const deleteCategories = (req, res) => {
         })
     Categories.deleteOne({ _id: id })
         .then(result => {
-            console.log(result);
             res.send(result)
         })
 }
