@@ -35,5 +35,5 @@ app.use('/verifyuser', jwtRoutes)
 
 
 app.listen(5000, () => {
-    console.log('Server PORT: 4000')
+    console.log('Server PORT: 5000')
 })
