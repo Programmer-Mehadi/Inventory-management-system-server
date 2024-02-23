@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 dotenv.config();
 
+const port = process.env.PORT || 5000
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -14,8 +16,6 @@ mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MO
     { useUnifiedTopology: true, useNewUrlParser: true },
     () => console.log('connect to database.')
 );
-
-
 const userRoutes = require('./routes/userRoutes');
 
 app.use('/user', userRoutes);
@@ -34,6 +34,6 @@ const jwtRoutes = require('./routes/jwtRoutes');
 app.use('/verifyuser', jwtRoutes)
 
 
-app.listen(5000, () => {
-    console.log('Server PORT: 4000')
+app.listen(port, () => {
+    console.log('Server PORT: ',port)
 })

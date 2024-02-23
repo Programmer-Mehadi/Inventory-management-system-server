@@ -2,6 +2,7 @@ const Categories = require('../models/Categories');
 const Product = require('../models/Product');
 
 const getAllCategories = async (req, res) => {
+    console.log("first")
     try {
         Categories.find()
             .then(data => res.send(data))
